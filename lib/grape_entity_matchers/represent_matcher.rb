@@ -1,13 +1,14 @@
 require "rspec/mocks"
-require "rspec/mocks/standalone"
 
 module GrapeEntityMatchers
   module RepresentMatcher
     def represent(representable)
       RepresentMatcher.new(representable)
     end
-      
+
     class RepresentMatcher
+      include ::RSpec::Mocks::ExampleMethods
+
       def initialize(representable)
         @expected_representable = representable
         RSpec::Mocks::setup
